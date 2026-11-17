@@ -23,8 +23,19 @@ Dostajesz kategorię (np. „Podaj wędlinę lub kiełbasę”) i 25 sekund. Ka�
 | ![Kategoria i pole odpowiedzi](docs/pytanie.png) | ![Odpowiedź spada na windę](docs/zjazd.png) |
 | **Diament: najrzadsza odpowiedź** | **Wynik dnia** |
 | ![Karta z Diamentem](docs/diament.png) | ![Wynik i statystyki graczy](docs/wynik.png) |
-| **Dynamit: tryb wieloosobowy** | **Na telefonie** |
-| ![Lobby trybu Dynamit](docs/dynamit.png) | <img src="docs/telefon.png" alt="Menu na telefonie" width="260"> |
+
+**Dynamit: tryb wieloosobowy**
+
+![Lobby trybu Dynamit](docs/dynamit.png)
+
+**Na telefonie**
+
+<p>
+<img src="docs/telefon-menu.png" alt="Menu na telefonie" width="24%">
+<img src="docs/telefon-pytanie.png" alt="Pytanie na telefonie" width="24%">
+<img src="docs/telefon-diament.png" alt="Diament na telefonie" width="24%">
+<img src="docs/telefon-wynik.png" alt="Wynik na telefonie" width="24%">
+</p>
 
 ## Treść
 
