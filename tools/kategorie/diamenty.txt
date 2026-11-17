@@ -1,0 +1,229 @@
+# Diamenty: 1–3 najmniej oczywiste odpowiedzi w kategorii. Reszta dawnego pokładu Diament przechodzi do Złota.
+# Format: id: odpowiedź | odpowiedź   (pierwszy wariant, tak jak w pliku z kategorią)
+zwierzeta-gosp: osłomuł | jedwabnik
+miasta-pl: Wyśmierzyce | Krynki
+owoce: nieśplik | mangostan
+warzywa: kardy | skorzonera
+kolory: umbra | sjena
+sporty: sepak takraw | kabaddi
+imiona-zenskie: Przybysława | Świętosława
+rzeki-pl: Wierzyca | Pasłęka
+zawody: rymarz | kaletnik
+instrumenty: nyckelharpa | basy kaliskie
+pierwiastki: oganeson | prazeodym
+potrawy-pl: parzybroda | hreczanyki
+kraje-eu: Kosowo | San Marino
+ptaki: pokląskwa | wodniczka
+drzewa: brekinia | iglicznia
+pilkarze-pl: Szymanowski | Jałocha
+marki-aut: Arrinera | Rimac
+planety-kosmos: Makemake | Haumea
+sprzet-kuchnia: makutra | kopystka
+gory: Puncak Jaya | Ojos del Salado
+czesci-ciala: kowadełko | strzemiączko
+gry-planszowe: Mare Nostrum | Twilight Imperium
+pisarze-pl: Sęp-Szarzyński | Naruszewicz
+imiona-meskie: Wszebor | Sobiesław
+stolice: Paramaribo | Thimphu
+kraje-swiat: Tuvalu | Nauru
+miasta-swiat: Kanpur | Surabaja
+zwierzeta-afryka: sitatunga | zorilla
+zwierzeta-las: smużka | pilch
+ryby: certa | ciosa
+psy-rasy: komondor | xolo
+kwiaty: smagliczka | ciemiernik
+grzyby: trzęsak | płachetka
+napoje: sbiten | pulque
+slodycze: pańska skórka | florentynki
+pieczywo: szneka | angielka
+przyprawy: mahleb | asafetyda
+meble: gierydon | berżera
+ubrania: burnus | sukmana
+obuwie: kalcesy | gety
+pojazdy: drezyna | wodnosamolot
+narzedzia: sztemajzel | gratownik
+sprzet-sport: buzdygan | czasza
+gry-komputerowe: Dwarf Fortress | Factorio
+filmy-pl: Struktura kryształu | Austeria
+seriale-pl: Ballada o Januszku | Pogranicze w ogniu
+bajki: Kot Ziemowit | Pingwin Pik-Pok
+postacie-bajki: Cipisek | Bajtek
+superbohaterowie: Martian Manhunter | Kapitan Żbik
+zespoly-pl: Daab | Trubadurzy
+piosenkarze-pl: Krystyna Prońko | Mieczysław Fogg
+raperzy-pl: Jędker | Pyskaty
+kompozytorzy: Noskowski | Żeleński
+malarze: Wojtkiewicz | Podkowiński
+naukowcy: Smoluchowski | Weigl
+krolowie-pl: Henryk Probus | Leszek Czarny
+wydarzenia-pl: rokosz Zebrzydowskiego | bitwa pod Byczyną
+zabytki-pl: Wąwóz Korzeniowy Dół | Twierdza Srebrna Góra
+jeziora-morza: Morze Laptiewów | Gardno
+wyspy: Tristan da Cunha | Jan Mayen
+choroby: porfiria | sarkoidoza
+zawody-medycyna: balneolog | androlog
+owady: widelnica | zadrapka
+ssaki-morza: salpa | pióroskrzelny
+gady-plazy: hatteria | grzebiuszka
+zwierzeta-domowe: karaczan madagaskarski | sugar glider
+dinozaury: silezaur | polakanthus
+warzywa-ogrod: miechunka | ogórecznik
+zboza: łzawica | kaniwa
+sery: redykołka | époisses
+alkohole: chacha | baijiu
+potrawy-swiat: feijoada | cassoulet
+zupy: kulajka | cziorba
+owoce-egzotyczne: borojo | cupuaçu
+ciasta: cassata | linzer
+narzedzia-kuchnia: stągiew | rynka
+pomieszczenia: kredensownia | lamus
+budynki: zikkurat | kolumbarium
+zawody-dawne: mincerz | sitarz
+przybory-szkolne: obsadka | krzywik
+przedmioty-szkolne: retoryka | kaligrafia
+emocje: weltschmerz | zgryzota
+cechy-charakteru: frasobliwy | rubaszny
+pogoda: iryzacja | ognie świętego Elma
+miesiace-swieta: Gromniczna | Noc Kupały
+jezyki: wilamowski | keczua
+waluty: ngultrum | ouguiya
+wynalazki: kevlar | tranzystor
+czesci-auta: kopułka | dyferencjał
+marki-odziez: Pako Lorente | Ochnik
+marki-tech: Elwro | Fonica
+sieci-sklepow: Arhelan | Frac
+aplikacje: Komoot | Libby
+portale: Epuls | Forumowisko
+sporty-zimowe: eisstock | skibob
+dyscypliny-la: rzut ciężarkiem | skok w dal z miejsca
+pilka-nozna: Rivelino | Kempes
+sportowcy-pl: Szozda | Sidło
+kluby-pilkarskie: Olimpia Grudziądz | Hutnik Kraków
+rzeczy-plaza: bransoletka UV | kosz plażowy
+rzeczy-plecak: krzesiwo | liofilizat
+rzeczy-lodowka: kawior | miso
+rzeczy-kieszen: krzemień | różaniec
+w-lazience: irygator | pumeks
+w-szkole: tellurium | cyrkiel tablicowy
+rzeczy-okragle: iluminator | hostia
+rzeczy-czerwone: cynober | gil
+rzeczy-zimne: Ojmiakon | Wostok
+cos-co-lata: lotopałanka | nasiono klonu
+cos-z-kolami: żyroskop | rikszy
+cos-w-lesie: wykrot | karpa
+zawody-sport: cutman | pacemaker
+emocje-zwierzat: czuchanie | tokowanie
+czynnosci-rano: pisanie porannych stron | olejowanie włosów
+hobby: lepidopterologia | kintsugi
+gatunki-muzyczne: zydeco | krautrock
+tance: pavana | sarabanda
+gatunki-filmowe: chanbara | mumblecore
+gatunki-literackie: facecja | moralitet
+ksiazki-lektury: Pamiątki Soplicy | Odprawa posłów greckich
+postacie-literackie: Skirgiełło | Hawranek
+miejsca-miasto: barbakan | podwórko-studnia
+miejsca-wakacje: Iwonicz | Stegna
+wojewodztwa: Krajna | Pałuki
+parki-narodowe: Puszcza Darżlubska | Puszcza Rudnicka
+gory-swiat: Shisha Pangma | Pik Lenina
+rzeki-swiat: Salween | Szatt al-Arab
+morze-polskie: kipiel | mierzeja
+kosmos-wyprawy: Juno | Leonow
+wszechswiat: blazar | Wielki Atraktor
+kolory-trudne: oberżynowy | akwamaryna
+ksztalty: lemniskata | astroida
+matematyka: kwaternion | homeomorfizm
+czesci-komputera: mostek północny | zworka
+marki-jedzenie: Prymat | Hellena
+fast-food: Jollibee | Arby's
+skladniki-pizzy: nduja | burrata
+warzywa-kiszone: pąki mniszka | młode szyszki
+lody-smaki: oliwkowe | piwne
+napoje-goraca: salep | karkade
+sporty-wodne: packrafting | apnea
+sporty-walki: bartitsu | glima
+gry-karciane: baśka | cribbage
+zabawki: bilboquet | Lite-Brite
+gry-podworkowe: kiczki | pikuty
+kosmetyki: kohl | brylantyna
+fryzury: bantu knots | chignon
+choroby-zwierzat: takin | markhor
+czesci-roslin: kutner | bielmo
+organy: wiązka Hisa | szyszynka
+kosci: trzeszczka | lemiesz
+wnetrze-auta: zegar elektryczny | napęd dysku
+kolory-flagi: Kirgistan | Bahrajn
+religia: eschatologia | ikonostas
+mitologia: Swarożyc | Mokosz
+potwory: płanetnik | bobok
+czary-fantasy: Mrużka | Slughorn
+wiedzmin: Ida Emean | Rience
+kraje-flagi-gwiazdy: garuda | wywerna
+sztuka: Żydówka z pomarańczami | Tratwa Meduzy
+instrumenty-orkiestra: wirginał | klawikord
+zwierzeta-polski-herb: bazyliszek | wieloryb
+choroby-roslin: przyrost naturalny | stalagmit
+slowa-na-k: kobczyk | kszyk
+slowa-na-p: pazurnica | potrzeszcz
+slowa-na-m: mszywioł | margaj
+czasowniki-ruch: dyrdać | hasać
+stany-usa: Rhode Island | Delaware
+miasta-europa: Tampere | Aarhus
+kontynenty-oceany: Nubia | Zakaukazie
+hymn-symbole: ryngraf | pas kontuszowy
+pieniadze: denominacja | weksel
+prace-domowe: krochmalenie | bielenie
+na-urodziny: candy bar | magik
+na-wesele: rozplecin | korowaj
+na-swieta: siemieniotka | moczka
+na-wielkanoc: Siuda Baba | pucheroki
+wakacje: gap year | vanlife
+zima: bojery | sanna
+kuchnia-wloska: vitello tonnato | cacio e pepe
+kuchnia-azjatycka: khao soi | larb
+kuchnia-polska-dania: dzionie | modrak
+wedliny: preswurszt | palcówka
+zoo: binturong | fossa
+cyrk: woltyżerka | august
+supermarket: punkt zwrotu butelek | kuchnie świata
+na-farmie: sąsiek | kłonica
+w-kosciele: korporał | empora
+sad-sad: tomatillo | chayote
+co-w-sypialni: łapacz snów | parawan
+aktorzy-pl: Kazimierz Junosza-Stępowski | Elżbieta Barszczewska
+aktorzy-swiat: Toshiro Mifune | Max von Sydow
+rezyserzy: Béla Tarr | Yasujirō Ozu
+filmy-swiat: Rashomon | Pancernik Potiomkin
+seriale-swiat: The Leftovers | Czarna Żmija
+disney-pixar: Merlin i miecz | Planeta skarbów
+zwierzeta-swiat-rzadkie: kanguroszczur | nibyżaba
+czesci-domu: kroksztyn | rizalit
+w-samochodzie-trasa: słupek pikietażowy | odbojnica
+elementy-wody: wywierzysko | ponor
+drzewa-owocowe: świdwa | ałycza
+narty-gory: ceprostrada | siklawa
+rzeczy-w-kuchni: zgrzewarka | kostkarka do lodu
+gry-sportowe-druzynowe: buzkashi | pesäpallo
+pilkarze-reprezentacja: Gancarczyk | Murawski
+wspolczesne-technologie: ransomware | ping
+skroty: ORMO | KGW
+miejscowosci-dziwne: pocztówka dźwiękowa | gazetka z naklejkami
+zawody-it: DPO | growth hacker
+uczelnie: ChAT | Collegium Witelona
+pojecia-szkolne: absolutorium | tarcza szkolna | kółko zainteresowań
+cos-kwasnego: owoc derenia | tarnina
+ptaki-swiat: alka olbrzymia | nur białodzioby
+warzywa-korzen: arakacza | czyściec bulwiasty
+cos-zoltego: nawłoć | cytryniec
+w-wiezieniu-film: Nien Nunb | Cad Bane
+pokemony: Dhelmise | Alomomola
+miejsca-praca: mennica | stacja polarna
+cos-zrobione-z-drewna: maselnica | cebrzyk
+emotikony: igielniki | ekslibrisy
+na-imprezie: picanha | kofta
+sprzet-biurowy: biuwar | rolodex
+cos-co-pachnie: wetiweria | petrichor
+na-imprezie-zabawy: bzz | kto to powiedział
+napoje-gazowane: pét-nat | perlage
+przybory-krawieckie: klocki koronkarskie | czółenko
+zjawiska-fizyka: promieniowanie Czerenkowa | nadciekłość

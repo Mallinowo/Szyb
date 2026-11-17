@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Szyb – Dynamit, gra słowna ze znajomymi</title>
+<meta name="description" content="Dynamit to wieloosobowa wersja Szybu. Podaj odpowiedź i przekaż dynamit dalej, zanim wybuchnie. Graj ze znajomymi albo dołącz do publicznego pokoju.">
+<link rel="canonical" href="https://szyb.app/multi">
+<meta name="theme-color" content="#0e0b1c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Szyb">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:url" content="https://szyb.app/multi">
+<meta property="og:title" content="Szyb · Dynamit – zagraj ze mną">
+<meta property="og:description" content="Podaj odpowiedź i przekaż dynamit dalej, zanim wybuchnie. Wygrywa ostatni górnik przy stole.">
+<meta property="og:image" content="https://szyb.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="/icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicon-192.png" sizes="192x192">
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/dynamit.css">
+</head>
+<body class="mp">
+<canvas id="cave" aria-hidden="true"></canvas>
+
+<div class="mp-corner">
+  <a class="sq-btn" href="/" aria-label="Wróć do Szybu" title="Szychta dnia">☰</a>
+  <button class="sq-btn" id="btnLeave" aria-label="Wyjdź z pokoju" title="Wyjdź z pokoju" hidden>⇥</button>
+</div>
+<button class="sq-btn mp-sound" id="btnSound" aria-label="Dźwięk">♪</button>
+<button class="sq-btn mp-report" data-report aria-label="Zgłoś błąd" title="Zgłoś błąd">!</button>
+
+<!-- ====== POCZEKALNIA GŁÓWNA (/multi) ====== -->
+<div id="home" class="mp-home">
+  <header class="mp-hero">
+    <div class="idle-dyn" id="idleDyn" aria-hidden="true"><span class="zzz">z z z</span></div>
+    <div class="mp-hero-t">
+      <h1 class="big-logo">Szyb</h1>
+      <p class="subtitle">DYNAMIT</p>
+    </div>
+  </header>
+  <p class="tagline">Podaj odpowiedź i przekaż dynamit dalej, zanim wybuchnie. Wygrywa ostatni górnik przy stole. <button class="linkish" id="btnHow">Jak grać?</button></p>
+
+  <div class="mp-grid">
+    <section class="mcard play-card">
+      <div class="mc-head"><span>TWÓJ GÓRNIK</span></div>
+      <div class="who">
+        <label class="lbl" for="nameIn">IMIĘ</label>
+        <input id="nameIn" class="mp-in" maxlength="16" autocomplete="nickname" spellcheck="false" placeholder="Górnik">
+        <div class="avatars" id="avatars"></div>
+        <p class="mp-rating" id="myRating"></p>
+      </div>
+
+      <div class="mc-head"><span>GRAJ Z LOSOWYMI GRACZAMI</span></div>
+      <div class="seg" id="sizes">
+        <button data-size="1v1">1 NA 1</button><button data-size="3">3</button><button data-size="4-6">4–6</button><button data-size="8-10">7–10</button>
+      </div>
+      <p class="cap" id="sizeCap">trzech przy stole</p>
+      <div class="two">
+        <div><button class="bigbtn gold" id="btnRated">▶ RANKINGOWA</button><p class="cap">ranking rośnie i spada</p></div>
+        <div><button class="bigbtn" id="btnQuick">▶ SZYBKA GRA</button><p class="cap">bez rankingu, dla zabawy</p></div>
+      </div>
+
+      <div class="mc-head"><span>GRAJ ZE ZNAJOMYMI</span></div>
+      <div class="friends">
+        <div class="fr-host">
+          <button class="bigbtn pink" id="btnHost">＋ ZAŁÓŻ POKÓJ</button>
+          <div class="hostopt"><button class="chip" id="btnVis">PUBLICZNY · NA LIŚCIE</button><span class="cap" id="visCap">każdy może dołączyć z listy</span></div>
+        </div>
+        <form class="joinrow" id="joinForm" autocomplete="off">
+          <input id="codeIn" class="mp-in code" maxlength="4" placeholder="KOD" spellcheck="false" autocapitalize="characters" aria-label="Kod pokoju">
+          <button class="pinkbtn" type="submit">DOŁĄCZ</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="mcard mp-rooms">
+      <div class="mc-head"><span>PUBLICZNE POKOJE</span><small id="roomsCount"></small></div>
+      <ul id="roomList" class="roomlist"></ul>
+    </section>
+  </div>
+  <p class="legal-links"><a href="/regulamin">Regulamin</a> · <a href="/prywatnosc">Prywatność</a> · <a href="mailto:kontakt@szyb.app">Kontakt</a> · <a href="#" data-report>Zgłoś błąd</a></p>
+</div>
+
+<!-- ====== POKÓJ (/multi/KOD) ====== -->
+<div id="room" class="mp-room" hidden>
+  <div class="rtop">
+    <div class="rbox"><small id="rVis">PUBLICZNY</small><b id="rCode">····</b></div>
+    <div class="rmid" id="rCat">POCZEKALNIA</div>
+    <div class="rbox right"><small id="rAliveL">W GRZE</small><b id="rAlive">0/0</b></div>
+  </div>
+
+  <div class="arena" id="arena">
+    <div class="qcard" id="qCard" hidden><p class="qk" id="qK">KATEGORIA 1</p><h2 id="qText">…</h2><p class="upline" id="upLine"></p></div>
+    <div class="center-card" id="cCard" hidden></div>
+    <canvas class="floor" id="floor" aria-hidden="true"></canvas>
+    <div class="seats" id="seats"></div>
+    <div class="dyn" id="dyn"><div class="dyn-body" id="dynBody"></div></div>
+    <div class="live" id="live" hidden><b id="liveText"></b></div>
+  </div>
+
+  <form class="mp-dock" id="ansForm" autocomplete="off">
+    <div class="lives" id="myLives" title="Twoje życia">♥<b>0</b></div>
+    <div class="inwrap">
+      <p class="confirm-box" id="confirmBox" hidden></p>
+      <p class="dup-hint" id="dupHint" hidden></p>
+      <input id="ansIn" maxlength="60" placeholder="czekaj na swoją kolej…" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send" aria-label="Odpowiedź">
+      <i class="hbar" id="heatBar"></i>
+    </div>
+    <button class="pinkbtn" id="ansBtn" type="submit">WYŚLIJ</button>
+  </form>
+
+  <aside class="mpanel chat" id="chat">
+    <header><span>CZAT</span><i></i></header>
+    <div class="chat-tabs"><button class="chip on" data-tab="log">Dziennik</button><button class="chip" data-tab="players">Gracze ▾</button></div>
+    <ul class="chatlog" id="chatLog"></ul>
+    <ul class="chatlog plist2" id="chatPlayers" hidden></ul>
+    <form class="joinrow" id="chatForm" autocomplete="off"><input id="chatIn" class="mp-in" maxlength="120" placeholder="napisz coś…" aria-label="Wiadomość"><button class="chip" type="submit">WYŚLIJ</button></form>
+  </aside>
+</div>
+
+<!-- jak grać -->
+<div class="mp-modal" id="howModal" hidden>
+  <div class="mpanel">
+    <header><span>JAK GRAĆ</span><i></i></header>
+    <p>Przy stole siedzi od 2 do 10 górników. Wszyscy widzą tę samą kategorię, np. „Podaj owoc”.</p>
+    <p>Dynamit leży przed jedną osobą. Ona musi wpisać poprawną odpowiedź, której jeszcze nikt nie podał w tej kategorii. Wtedy dynamit przechodzi do następnej osoby przy stole. Złe albo powtórzone odpowiedzi nie przekazują dynamitu, więc pisz dalej.</p>
+    <p>Na odpowiedź masz kilkanaście sekund, ale dokładnej długości lontu nie widać. Lont zapala się od nowa po każdej dobrej odpowiedzi. Komu dynamit wybuchnie, ten traci życie, a gra toczy się dalej w tej samej kategorii, aż skończą się odpowiedzi. Każdy ma 2 życia. Wygrywa ostatni górnik przy stole.</p>
+    <p>Odpowiedź możesz pisać, zanim przyjdzie twoja kolej, i wysłać ją Enterem, gdy dynamit do ciebie trafi. Bez polskich znaków też zadziała, gra zapyta tylko „Czy chodziło Ci o…?”.</p>
+    <p>Gra rankingowa łączy cię z graczami o podobnym rankingu i zmienia go po każdej grze. Szybka gra jest bez rankingu. Możesz też założyć własny pokój i wysłać znajomym kod albo link.</p>
+    <p>Nowe postacie odblokujesz serią dni w szychcie dnia.</p>
+    <button class="bigbtn wide" id="howClose">ROZUMIEM</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="/shared/cats.js"></script>
+<script src="/shared/data.js"></script>
+<script src="/fx.js"></script>
+<script src="/shared/judge.js"></script>
+<script src="/dynamit.js"></script>
+<script src="/report.js"></script>
+</body>
+</html>

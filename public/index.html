@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Szyb – codzienna polska gra słowna</title>
+<meta name="description" content="Szyb to darmowa polska gra słowna na każdy dzień. 7 kategorii, 25 sekund na odpowiedź, ten sam zestaw dla wszystkich. Im rzadsza poprawna odpowiedź, tym głębiej zjeżdża winda.">
+<link rel="canonical" href="https://szyb.app/">
+<meta name="theme-color" content="#0e0b1c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Szyb">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:url" content="https://szyb.app/">
+<meta property="og:title" content="Szyb – codzienna polska gra słowna">
+<meta property="og:description" content="7 kategorii, 25 sekund. Im rzadsza odpowiedź, tym głębiej zjeżdżasz. Ile metrów dasz radę dziś?">
+<meta property="og:image" content="https://szyb.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="/icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Szyb","url":"https://szyb.app/","inLanguage":"pl","genre":["gra słowna","quiz"],"description":"Codzienna polska gra słowna: 7 kategorii, im rzadsza poprawna odpowiedź, tym więcej punktów.","applicationCategory":"Game","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"PLN"}}</script>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicon-192.png" sizes="192x192">
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="depth-layer" id="depthLayer" aria-hidden="true"></div>
+<div class="danger" id="danger" aria-hidden="true"></div>
+<div class="rider" id="rider" hidden></div>
+<div id="app">
+  <header class="top">
+    <div class="logo" id="logo" role="link" tabindex="0">Szyb</div>
+    <div class="top-right"><div id="authBox"></div><button class="sq-btn" id="btnSound" aria-label="Dźwięk">♪</button></div>
+  </header>
+
+  <main>
+    <!-- MENU -->
+    <section id="scr-menu" class="screen active">
+      <div class="title-block">
+        <h1 class="big-logo">Szyb</h1>
+        <p class="subtitle">SZYCHTA DNIA</p>
+        <p class="tagline">7 kategorii · 25 sekund na każdą · rzadsze odpowiedzi zjeżdżają głębiej</p>
+      </div>
+      <button class="how-link" id="btnHow">▸ jak grać</button>
+      <button class="descent-btn" id="btnDaily">▼ ZJAZD W DÓŁ ▼</button>
+      <a class="multi-btn" href="/multi" id="btnMulti">✦ DYNAMIT · GRAJ ZE ZNAJOMYMI ✦</a>
+      <div class="menu-foot">
+        <span class="dive-no" id="diveNo">SZYCHTA #1</span>
+        <span class="small-btns"><button class="sm-btn" id="btnStats">STATYSTYKI</button><button class="sm-btn" id="btnSettings">USTAWIENIA</button></span>
+      </div>
+      <p class="countdown" id="menuCountdown"></p>
+      <p class="legal-links"><a href="/regulamin">Regulamin</a> · <a href="/prywatnosc">Prywatność</a> · <a href="mailto:kontakt@szyb.app">Kontakt</a> · <a href="#" data-report>Zgłoś błąd</a></p>
+    </section>
+
+    <!-- GRA -->
+    <section id="scr-play" class="screen">
+      <div class="phud">
+        <div class="hbox"><small>GŁĘBOKOŚĆ</small><b id="hudDepth">0 m</b></div>
+        <div class="hprog"><div class="squares" id="progSq"></div><small id="roundLabel">KATEGORIA 1 Z 7</small></div>
+        <div class="hbox right"><small>PUNKTY</small><b id="scoreLabel">0</b></div>
+      </div>
+      <div class="prompt" id="promptCard">
+        <p class="pk" id="promptK">KATEGORIA 1 Z 7</p>
+        <h2 class="question" id="question">…</h2>
+        <p class="ph">▼ rzadsze odpowiedzi zjeżdżają głębiej ▼</p>
+      </div>
+      <div class="pill" id="countPill" hidden>zjeżdżamy · zegar rusza za <b id="countNum">3</b></div>
+      <div class="dock" id="dock" hidden>
+        <div class="msg" id="msg" aria-live="polite"></div>
+        <div class="confirm" id="confirm" hidden>
+          <span>Czy chodziło Ci o <b id="confirmWord"></b>?</span>
+          <button class="cbtn yes" id="btnYes" type="button">TAK ⏎</button><button class="cbtn" id="btnNo" type="button">NIE · Esc</button>
+        </div>
+        <form id="answerForm" autocomplete="off">
+          <div class="clock" id="clock"><svg viewBox="0 0 44 44"><circle class="ring-bg" cx="22" cy="22" r="19"/><circle class="ring" id="clockRing" cx="22" cy="22" r="19"/></svg><span id="clockNum">25</span></div>
+          <div class="inwrap">
+            <input id="answerInput" placeholder="wpisz jedną odpowiedź…" maxlength="60" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go" aria-label="Odpowiedź">
+            <i class="tbar" id="tbar"></i>
+          </div>
+          <button class="dive" id="btnDive" type="submit">ZJAZD</button>
+        </form>
+      </div>
+      <button class="next-btn" id="btnNext" type="button" hidden>ZJEŻDŻAJ ▼</button>
+      <div class="checking" id="checking" hidden>SPRAWDZAM WYNIK…</div>
+    </section>
+
+    <!-- WYNIK -->
+    <section id="scr-result" class="screen">
+      <div class="res">
+        <div class="res-head"><span class="res-logo">Szyb</span><span id="resultKicker">SZYCHTA #1 ZALICZONA</span></div>
+        <div class="res-score"><b id="resultPts">0</b><span id="resultDepth">−0 m</span></div>
+        <div class="curve-box" id="chartBox">
+          <svg id="curve" viewBox="0 0 700 120" preserveAspectRatio="none" role="img" aria-label="Rozkład wyników wszystkich graczy"></svg>
+          <div class="curve-axis" id="curveAxis"></div>
+          <p class="curve-sum" id="chartSum"></p>
+        </div>
+        <h3 class="sec">DZIENNIK ZJAZDU <small>głębiej = rzadziej</small></h3>
+        <div class="divelog" id="diveLog"></div>
+        <h3 class="sec">OCENA</h3>
+        <div class="bearing" id="bearing"></div>
+        <div class="res-actions"><button class="rbtn pink" id="btnShare">KOPIUJ WYNIK</button><button class="rbtn" id="btnShare2">UDOSTĘPNIJ…</button></div>
+        <div class="res-actions"><button class="rbtn cyan" id="btnMenu">◂ MENU</button><button class="rbtn" id="btnStats2">STATYSTYKI</button></div>
+        <h3 class="sec">UROBEK <small>kliknij kategorię, żeby zobaczyć wszystkie odpowiedzi</small></h3>
+        <ol class="catch" id="resultAnswers"></ol>
+        <h3 class="sec">DZIENNIK</h3>
+        <p class="logbook" id="resultStats"></p>
+        <p class="nextd" id="nextDaily"></p>
+        <h3 class="sec">ZAPROPONUJ PYTANIE <small>najlepsze trafią do gry</small></h3>
+        <form class="suggest" id="suggestForm" autocomplete="off">
+          <input id="sgText" maxlength="140" placeholder="np. Podaj coś, co można znaleźć w lodówce" aria-label="Twoje pytanie">
+          <textarea id="sgAnswers" maxlength="300" rows="2" placeholder="przykładowe odpowiedzi (nieobowiązkowo), np. mleko, masło, kapary" aria-label="Przykładowe odpowiedzi"></textarea>
+          <div class="sg-row"><button class="rbtn pink" id="sgSend" type="submit">WYŚLIJ</button><span class="sg-msg" id="sgMsg" aria-live="polite"></span></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- STATYSTYKI -->
+    <section id="scr-stats" class="screen">
+      <div class="result">
+        <p class="kicker">Moje statystyki</p>
+        <div class="stat-row" id="statTiles"></div>
+        <h3 class="sub">Rozkład pokładów</h3>
+        <div class="dist" id="statDist"></div>
+        <div class="actions"><button class="btn ghost" data-back>← Menu</button></div>
+      </div>
+    </section>
+
+    <!-- USTAWIENIA -->
+    <section id="scr-settings" class="screen">
+      <div class="result">
+        <p class="kicker">Ustawienia</p>
+        <div class="setting"><span>Dźwięki 8-bit</span><button class="btn" id="btnMute">Włączone</button></div>
+        <div class="actions"><button class="btn ghost" data-back>← Menu</button></div>
+      </div>
+    </section>
+
+    <!-- JAK GRAĆ -->
+    <section id="scr-how" class="screen">
+      <div class="result how">
+        <p class="kicker">Jak grać</p>
+        <p>Dostajesz kategorię, np. „Podaj owoc”. Przez 3 sekundy możesz ją przeczytać, potem rusza zegar: 25 sekund. Wpisz jedną pasującą odpowiedź i wciśnij Enter. Jeśli gra jej nie zna, usłyszysz „głucho” i możesz próbować dalej, aż skończy się czas. Liczy się pierwsza uznana odpowiedź.</p>
+        <p>Każda odpowiedź leży w jakimś pokładzie. Oczywiste to piasek, rzadkie to złoto i diament. Winda zjeżdża przez kolejne pokłady i staje tam, gdzie leży Twoja odpowiedź. 1 pkt = 10 m, siedem kategorii to maksymalnie 700 pkt, czyli 7000 m.</p>
+        <div id="legendList"></div>
+        <p>Nie musisz pisać polskich znaków ani dbać o odmianę: „ges”, „gęsi” i „Gęś” to ta sama odpowiedź. Jeśli wpiszesz słowo bez polskich znaków, w innej formie albo z literówką, gra zapyta „Czy chodziło Ci o…?” i pokaże poprawną pisownię. Enter = tak, Esc = popraw.</p>
+        <p>Szychta jest jedna dziennie i taka sama dla wszystkich. Nowa zaczyna się o północy. Po zjeździe zobaczysz, jak wypadłeś na tle innych i jakie odpowiedzi leżały najgłębiej.</p>
+        <div class="actions"><button class="btn ghost" data-back>← Menu</button></div>
+      </div>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+</div>
+<script src="shared/cats.js"></script>
+<script src="shared/data.js"></script>
+<script src="shared/judge.js"></script>
+<script src="fx.js"></script>
+<script src="auth.js"></script>
+<script src="game.js"></script>
+<script src="report.js"></script>
+</body>
+</html>
