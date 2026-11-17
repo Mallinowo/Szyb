@@ -4,6 +4,8 @@
 
 *English version below.*
 
+![Menu gry Szyb](docs/menu.png)
+
 Dostajesz kategorię (np. „Podaj wędlinę lub kiełbasę”) i 25 sekund. Każda poprawna odpowiedź się liczy, ale im rzadsza, tym głębiej zjeżdża winda: oczywista odpowiedź to Piasek, a te, na które wpada mało kto, to Złoto i Diament.
 
 ## Jak się gra
@@ -13,6 +15,16 @@ Dostajesz kategorię (np. „Podaj wędlinę lub kiełbasę”) i 25 sekund. Ka�
 - **Wyrozumiały sędzia:** rozpoznaje odpowiedzi bez polskich znaków, w odmianie (gęsi → gęś), z literówkami i w dłuższej formie („szynka konserwowa” → szynka). Gdy pisownia się różni, pyta „Czy chodziło Ci o…?”.
 - **Dynamit (/multi):** tryb dla 2–10 graczy na zmianę z lontem, sercami, kolejką rankingową (Elo) i pokojami prywatnymi.
 - **Statystyki** wszystkich graczy dnia, wynik do skopiowania, logowanie Google (opcjonalne).
+
+## Zrzuty ekranu
+
+| Pytanie | Zjazd w dół |
+|---|---|
+| ![Kategoria i pole odpowiedzi](docs/pytanie.png) | ![Odpowiedź spada na windę](docs/zjazd.png) |
+| **Diament: najrzadsza odpowiedź** | **Wynik dnia** |
+| ![Karta z Diamentem](docs/diament.png) | ![Wynik i statystyki graczy](docs/wynik.png) |
+| **Dynamit: tryb wieloosobowy** | **Na telefonie** |
+| ![Lobby trybu Dynamit](docs/dynamit.png) | <img src="docs/telefon.png" alt="Menu na telefonie" width="260"> |
 
 ## Treść
 
@@ -68,6 +80,8 @@ You get a category (e.g. "Name a cold cut or sausage") and 25 seconds. Any corre
 - **Content:** ~390 categories and ~89k answers; Diamond is always just 1–3 of the least obvious answers.
 - **Author panel:** player-suggested questions, bug reports with screenshots, and a "missing answers" list of what players typed that the game didn't know, addable to the game with one click.
 - **Tech:** Node.js 18+ with zero dependencies, vanilla HTML/CSS/JS client with a pixel-art canvas shaft and 8-bit WebAudio sounds, shared judge module for client and server (scores are computed server-side), rate limiting and CSP. Hosted on Railway behind Cloudflare.
+
+Screenshots are in the Polish section above (`docs/`).
 
 Run locally with `node server.js` and open http://localhost:3000.
 
